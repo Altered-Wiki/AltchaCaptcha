@@ -1,0 +1,46 @@
+{
+    "name": "AltchaCaptcha",
+    "version": "1.0.0",
+    "author": ["altered.wiki contributors"],
+    "url": "https://altered.wiki",
+    "description": "Self-hosted proof-of-work CAPTCHA using Altcha, with no external service dependency.",
+    "license-name": "MIT",
+    "type": "other",
+    "requires": {
+        "MediaWiki": ">= 1.39.0",
+        "extensions": {
+            "ConfirmEdit": "*"
+        }
+    },
+    "AutoloadClasses": {
+        "AltchaCaptcha": "includes/AltchaCaptcha.php",
+        "HTMLAltchaField": "includes/HTMLAltchaField.php",
+        "SpecialAltchaJS": "includes/SpecialAltchaJS.php"
+    },
+    "SpecialPages": {
+        "AltchaJS": "SpecialAltchaJS"
+    },
+    "config": {
+        "AltchaHmacKey": {
+            "value": "",
+            "description": "HMAC-SHA256 secret key used to sign and verify Altcha challenges. Generate with: openssl rand -hex 32"
+        },
+        "AltchaComplexityMin": {
+            "value": 40000,
+            "description": "Minimum number of SHA-256 iterations the client must perform."
+        },
+        "AltchaComplexityMax": {
+            "value": 200000,
+            "description": "Maximum number of SHA-256 iterations the client must perform."
+        },
+        "AltchaJSUrl": {
+            "value": "https://cdn.jsdelivr.net/npm/altcha/dist/altcha.min.js",
+            "description": "Upstream URL to fetch the Altcha widget JS from. Fetched server-side and cached locally; never loaded directly by the browser."
+        },
+        "AltchaJSTTL": {
+            "value": 86400,
+            "description": "How long (in seconds) to serve the cached Altcha JS before re-fetching from upstream. Default: 86400 (24 hours)."
+        }
+    },
+    "manifest_version": 2
+}
