@@ -1,4 +1,5 @@
 <?php
+// Copyright (c) 2026 altered.wiki contributors. MIT License.
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\UnlistedSpecialPage;
